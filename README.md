@@ -23,5 +23,12 @@ Back-end
 
 Reorgjs' backend is a Sinatra web server. Its two main duties are to serve the index (from an HAML template) and to answer POST and GET requests emitted by the Javascript front-end.
 
-The database (in which names, rumors and votes are stored) is SQLite. 
+The database (in which names, rumors and votes are stored) is SQLite.
+
+I cannot include my version of this database because it includes my colleagues names, but here's the schema:
+
+Air:Reorgjs florent$ echo .schema | sqlite3 reorgjs.sqlite
+CREATE TABLE options(opt VARCHAR);
+CREATE TABLE persons(name VARCHAR);
+CREATE TABLE votes(person INT, option INT, value INT);
 
