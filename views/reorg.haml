@@ -1,0 +1,45 @@
+!!!
+%html{ :xmlns=>"http://www.w3.org/1999/xhtml" }
+	%head
+		%title Generateur de rumeurs de la DSI
+		%meta{ "http-equiv"=>"Content-Type", :content=>"text/html;charset=UTF-8" }
+		%link{ :rel=>"stylesheet", :type=>"text/css", :href=>"reorg/stylesheet.css" }
+		%script{ :type=>"text/javascript", :src=>"http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" }
+		%script{ :type=>"text/javascript", :src=>"reorg.js" }
+		%script{ :type=>"text/javascript", :src=>"reorg_curvycorners.js" }
+	%body
+		#top10_wrapper
+			Top 10 &nbsp;
+			#top10_true.button réalistes
+			#top10_votes.button nombre de votes
+			/#top10_comments.button commentées
+			#top10
+		#rumor_wrapper
+			#person
+			#rumor
+			#opinion
+		#buttons_wrapper
+			#no.button
+				%a Nooooooon.
+			#yes.button
+				%a Ca me parait plausible !
+			%br
+			%br
+			#whatever.button
+				%a Autre rumeur
+		-##comments_wrapper
+			-#Commentaires
+			-#%br
+			-#—
+			-##comments
+				-##placeholder
+					-#%i Aucun commentaire.
+			-#%br
+			-#%br
+			-#%br
+			-#%textarea#comment_text{ :cols=>80, :rows=>5 }
+			-#%br
+			-##post_comment.button
+				-#Poster
+		#footer
+			Générateur de rumeurs de la DSI.

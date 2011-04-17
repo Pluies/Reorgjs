@@ -1,0 +1,112 @@
+// Variables and mixins
+$footerHeight: 3em
+$McDoRed: #f20508
+$McDoYellow: #fcc405
+=center
+  width: 70%
+  text-align: center
+  :margin
+    left: auto
+    right: auto
+=floatin
+=low_opacity
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
+  filter: alpha(opacity=80)
+  opacity: 0.8
+=small_padding
+  :padding
+    left: 0.5em
+    right: 0.5em
+    top: 0.1em
+    bottom: 0.1em
+
+
+// SASS
+*
+  margin: 0px
+  padding: 0px
+
+html
+  width: 100%
+  background: #121212
+  color: #D9D7D0
+
+body
+  //background: url("/reorg_back.png") 50% 50% no-repeat
+  height: 100%
+  min-height: 600px
+
+#top10_wrapper
+  float: right
+  text-align: right
+  :padding
+    top: 0.5em
+    right: 1em
+
+#top10_votes, #top10_true, #top10_comments
+  background-color: #333
+.desc
+  font-size: 0.7em
+  padding-top: -0.1em
+  padding-bottom: 0.3em
+
+#top10
+  display: none
+
+#rumor_wrapper
+  padding-top: 2em
+  padding-bottom: 2em
+  font-size: 3em
+  +center
+#opinion
+  font-size: 0.5em
+
+#buttons_wrapper
+  +center
+  font-size: 2em
+.button
+  padding: 0.5em
+  +low_opacity
+
+#no
+  background-color: #8A3F3F
+  margin-right: 0.8em
+#yes
+  background-color: #346A34
+#whatever
+  font-size: 0.8em
+  background-color: #666
+  +small_padding
+
+#comments_wrapper
+  +center
+  font-size: 1.5em
+  padding-top: 2em
+
+#comments
+  width: 50%
+  :margin
+    left: auto
+    right: auto
+  font-size: 0.7em
+  text-align: right
+
+.comment
+  :margin
+    top: 1em
+    bottom: 1em
+
+#post_comment
+  background-color: #232323
+  +small_padding
+  margin-top: 0.5em
+
+#footer
+  +center
+  font-size: 0.8em
+  margin-top: 5em
+  margin-bottom: 2em
+
+#person, #rumor, .button
+  display: inline-block
+
