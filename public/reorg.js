@@ -4,7 +4,6 @@ js_option_id = 0;
 js_option_label = '';
 js_yes = 0;
 js_nos = 0;
-js_comments = [];
 
 $(document).ready(function(){
 		roundCorners();
@@ -101,22 +100,15 @@ function newRumor(){
 			js_option_label = data.option_label;
 			js_yes = parseInt(data.yes, 10);
 			js_nos = parseInt(data.no, 10);
-			js_comments = data.comments;
 			var votes = js_yes + js_nos;
 			// And display it
 			$('#person').html(js_person_name);
 			$('#rumor').html(js_option_label);
 			var percent = (votes >= 1) ? (js_yes/votes)*100 : 0;
-			$('#opinion').html('Crédibilité : '+percent.toFixed(0)+'% ('+votes+' votes)');
-			if(js_comments.length > 0){
-				$('#placeholder').hide();
-				$.each(js_comments, function(index, value){
-						$('#comments').append('<div class="comment c">'+value+'</div>');
-						if( 1+index < js_comments.length) $('#comments').append('<hr class="c"/>');
-					});
-			}
+			if(window.location.href.match(/lang=en/))
+				$('#opinion').html('Credibility: '+percent.toFixed(0)+'% ('+votes+' votes)');
 			else
-				$('#placeholder').show();
+				$('#opinion').html('Crédibilité : '+percent.toFixed(0)+'% ('+votes+' votes)');
 		});
 	window.scrollTo(0,0);
 }

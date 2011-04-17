@@ -1,0 +1,32 @@
+!!!
+%html{ :xmlns=>"http://www.w3.org/1999/xhtml" }
+	%head
+		%title The rumor generator
+		%meta{ "http-equiv"=>"Content-Type", :content=>"text/html;charset=UTF-8" }
+		%link{ :rel=>"stylesheet", :type=>"text/css", :href=>"reorg/stylesheet.css" }
+		%script{ :type=>"text/javascript", :src=>"http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" }
+		%script{ :type=>"text/javascript", :src=>"reorg.js" }
+		%script{ :type=>"text/javascript", :src=>"reorg_curvycorners.js" }
+	%body
+		#top10_wrapper
+			Top 10 &nbsp;
+			#top10_true.button realistic
+			#top10_votes.button number of votes
+			#top10
+		#rumor_wrapper
+			#person
+			#rumor
+			#opinion
+		#buttons_wrapper
+			#no.button
+				%a Nooooooo.
+			#yes.button
+				%a Sounds plausible!
+			%br
+			%br
+			#whatever.button
+				%a Other rumor
+		#footer
+			Rumor generator (
+			%a{:href=>"reorg?lang=fr"} French version
+			)

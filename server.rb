@@ -20,6 +20,10 @@ helpers do
 				end
 			end
 		rescue Exception
+			# SQLite can only process one request at a time, and might
+			# throw exception during standard activities (e.g. while 
+			# fecthing a new rumor after a vote). This small-sleep-and-
+			# retry strategy is kind of a kludge.
 			sleep 0.1
 			retry if (retries -= 1) > 0
 		end
@@ -45,12 +49,6 @@ helpers do
 	end
 	def add_vote_for(person, option, value)
 		dbquery 'insert into votes(person, option, value) values(?, ?, ?)', [person, option, value]
-	end
-	def get_comments_for(person, option)
-		dbquery('select comment from comments where person=? and option=?', [person, option]).map{|row| row.first }
-	end
-	def add_comment_for(person, option, comment)
-		dbquery 'insert into comments(person, option, comment) values(?, ?, ?)', [person, option, comment]
 	end
 	def top10_votes
 		top10 = []
@@ -84,7 +82,11 @@ end
 
 
 get '/reorg' do
-	haml :reorg
+	if params[:lang] and params[:lang] == "en"
+		haml :reorg_en
+	else
+		haml :reorg_fr
+	end
 end
 
 get '/reorg/random' do
@@ -92,14 +94,12 @@ get '/reorg/random' do
 	person_id = random_person
 	option_id = random_option
 	yes, no = get_vote_for person_id, option_id
-	comments = get_comments_for person_id, option_id
 	JSON    'person_id' => person_id,
 		'person_name' => (person person_id),
 		'option_id' => option_id,
 		'option_label' => (option option_id),
 		'yes' => yes,
-		'no' => no,
-		'comments' => comments
+		'no' => no
 end
 
 get '/reorg/topvoted' do
@@ -114,11 +114,6 @@ end
 
 post '/reorg/vote' do
 	add_vote_for params[:person], params[:option], params[:value]
-	200
-end
-
-post '/reorg/comment' do
-	add_comment_for params[:person], params[:option], params[:comment]
 	200
 end
 
