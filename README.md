@@ -25,7 +25,9 @@ Reorgjs' backend is a Sinatra web server. Its two main duties are to serve the i
 
 The database (in which names, rumors and votes are stored) is SQLite.
 
-I cannot include my version of this database on GitHub because it includes my colleagues names, but here's the schema:
+I cannot include my version of this database on GitHub because it is filled with my colleagues names, but I included a sample database with a handful of names and options.
+
+If you want to recreate it, here's the schema:
 
 	Air:Reorgjs florent$ echo .schema | sqlite3 reorgjs.sqlite
 	CREATE TABLE options(opt VARCHAR);
