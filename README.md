@@ -27,10 +27,10 @@ The database (in which names, rumors and votes are stored) is SQLite.
 
 I cannot include my version of this database on GitHub because it includes my colleagues names, but here's the schema:
 
-  Air:Reorgjs florent$ echo .schema | sqlite3 reorgjs.sqlite
-  CREATE TABLE options(opt VARCHAR);
-  CREATE TABLE persons(name VARCHAR);
-  CREATE TABLE votes(person INT, option INT, value INT);
+> Air:Reorgjs florent$ echo .schema | sqlite3 reorgjs.sqlite
+> CREATE TABLE options(opt VARCHAR);
+> CREATE TABLE persons(name VARCHAR);
+> CREATE TABLE votes(person INT, option INT, value INT);
 
 *persons* will contain the person names as a string, and *options* the different rumors ("is a happy camper", "will get married soon", "loves Aqua", etc).
 
